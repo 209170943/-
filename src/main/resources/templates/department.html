@@ -1,0 +1,117 @@
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+<!--top导航栏-->
+<nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">公司介绍</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link" href="#">人力资源部 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">请假申请</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">报销</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+        </form>
+    </div>
+</nav>
+
+<!--中间-->
+<div class="container-fluid">
+    <div class="row">
+        <nav class="list-group col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <a href="employee.html" th:href="@{/employee}" class="list-group-item list-group-item-action list-group-item-light" style="background-color: #adb5bd">员工管理</a>
+                <a href="employee.html" th:href="@{/employee}" class="list-group-item list-group-item-action list-group-item-light" >员工信息</a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-light">新增员工</a>
+                <a href="#" th:href="@{/depts}" class="list-group-item list-group-item-action list-group-item-light" style="background-color: #adb5bd">部门管理</a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-light">部门信息</a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-light">新增部门</a>
+            </div>
+        </nav>
+
+        <!--right主要内容-->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="">
+                <hr>
+                <button type="button" class="btn btn-info">添加部门信息</button>
+                <hr>
+                <table class="table table-light table-hover">
+                    <thead>
+                    <tr>
+                        <th>员工编号</th>
+                        <th>员工姓名</th>
+                        <th>部门</th>
+                        <th>操作</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="dep:${dept}">
+                        <td th:text="${dep.dept_id}"></td>
+                        <td th:text="${dep.dept_name}"></td>
+                        <td th:text="${dep.dept_leader}"></td>
+                        <td >
+                            <button type="button" class="btn btn-primary">修改</button>
+                            <button type="button" class="btn btn-danger">删除</button>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+                <ul class="pagination" style="margin: 40px 0 0 70%">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </div>
+        </main>
+        <div>
+
+        </div>
+        <!--bottom下面信息-->
+    </div>
+</div>
+<hr>
+<!--尾部-->
+<div style="text-align: center">
+    <p>江苏省南京市弘景大道一号</p>
+    <p>njit@.com</p>
+    <p>456-123456</p>
+</div>
+
+</body>
+</html>
